@@ -1,0 +1,373 @@
+/* 管理后台通用样式 */
+
+/* 页面容器 */
+.admin-page {
+  padding: var(--space-lg);
+}
+
+/* 页面头部 */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.page-title {
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.page-title .el-icon {
+  color: var(--color-primary);
+}
+
+/* 工具栏 */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-lg);
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.toolbar-left,
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* 数据卡片 */
+.data-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  max-height: 600px;
+  overflow: hidden;
+}
+
+/* 表格样式覆盖 - 强制深色主题 */
+/* 全局表格样式 - 应用于所有管理页面 */
+.admin-page :deep(.el-table),
+[class*="-manage"] :deep(.el-table) {
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+}
+
+/* 表头样式 */
+.admin-page :deep(.el-table__header-wrapper),
+.admin-page :deep(.el-table__header),
+.admin-page :deep(.el-table__header tr),
+.admin-page :deep(.el-table__header th),
+[class*="-manage"] :deep(.el-table__header-wrapper),
+[class*="-manage"] :deep(.el-table__header),
+[class*="-manage"] :deep(.el-table__header tr),
+[class*="-manage"] :deep(.el-table__header th) {
+  background: var(--bg-secondary) !important;
+}
+
+.admin-page :deep(.el-table th.el-table__cell),
+[class*="-manage"] :deep(.el-table th.el-table__cell) {
+  background: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* 表格主体 */
+.admin-page :deep(.el-table .el-table__body),
+.admin-page :deep(.el-table__body-wrapper .el-table__body),
+[class*="-manage"] :deep(.el-table .el-table__body),
+[class*="-manage"] :deep(.el-table__body-wrapper .el-table__body) {
+  background: var(--bg-card) !important;
+}
+
+/* 表格行 */
+.admin-page :deep(.el-table tr),
+.admin-page :deep(.el-table__body tr),
+[class*="-manage"] :deep(.el-table tr),
+[class*="-manage"] :deep(.el-table__body tr) {
+  background: var(--bg-card) !important;
+}
+
+/* 表格单元格 */
+.admin-page :deep(.el-table td.el-table__cell),
+.admin-page :deep(.el-table__body td.el-table__cell),
+[class*="-manage"] :deep(.el-table td.el-table__cell),
+[class*="-manage"] :deep(.el-table__body td.el-table__cell) {
+  background: var(--bg-card) !important;
+  color: var(--text-secondary) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* 斑马纹样式 */
+.admin-page :deep(.el-table--striped .el-table__body tr.el-table__row--striped td.el-table__cell),
+[class*="-manage"] :deep(.el-table--striped .el-table__body tr.el-table__row--striped td.el-table__cell) {
+  background: var(--bg-secondary) !important;
+}
+
+/* 悬停效果 */
+.admin-page :deep(.el-table--enable-row-hover .el-table__body tr:hover > td.el-table__cell),
+[class*="-manage"] :deep(.el-table--enable-row-hover .el-table__body tr:hover > td.el-table__cell) {
+  background: var(--bg-tertiary) !important;
+}
+
+/* 空状态 */
+.admin-page :deep(.el-table__empty-block),
+[class*="-manage"] :deep(.el-table__empty-block) {
+  background: var(--bg-card) !important;
+}
+
+.admin-page :deep(.el-table__empty-text),
+[class*="-manage"] :deep(.el-table__empty-text) {
+  color: var(--text-muted) !important;
+}
+
+/* el-card 内的表格样式 */
+.admin-page :deep(.el-card),
+[class*="-manage"] :deep(.el-card) {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.admin-page :deep(.el-card__header),
+[class*="-manage"] :deep(.el-card__header) {
+  border-bottom: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.admin-page :deep(.el-card__body),
+[class*="-manage"] :deep(.el-card__body) {
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+}
+
+/* 表格内的按钮链接样式 */
+.admin-page :deep(.el-table .el-button--link),
+[class*="-manage"] :deep(.el-table .el-button--link) {
+  color: var(--color-primary) !important;
+}
+
+.admin-page :deep(.el-table .el-button--link.el-button--danger),
+[class*="-manage"] :deep(.el-table .el-button--link.el-button--danger) {
+  color: var(--color-danger) !important;
+}
+
+.admin-page :deep(.el-table .el-button--link:hover),
+[class*="-manage"] :deep(.el-table .el-button--link:hover) {
+  opacity: 0.8;
+}
+
+/* 强制所有表格单元格背景色 */
+.admin-page :deep(.el-table__cell),
+[class*="-manage"] :deep(.el-table__cell) {
+  background: var(--bg-card) !important;
+}
+
+/* 分页样式覆盖 */
+.admin-page :deep(.el-pagination),
+[class*="-manage"] :deep(.el-pagination) {
+  margin-top: var(--space-lg);
+  justify-content: flex-end;
+}
+
+.admin-page :deep(.el-pagination .el-pager li),
+[class*="-manage"] :deep(.el-pagination .el-pager li) {
+  background: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+.admin-page :deep(.el-pagination .el-pager li.active),
+[class*="-manage"] :deep(.el-pagination .el-pager li.active) {
+  background: var(--color-primary) !important;
+  color: #fff !important;
+}
+
+.admin-page :deep(.el-pagination .el-pagination__total),
+.admin-page :deep(.el-pagination .el-pagination__jump),
+[class*="-manage"] :deep(.el-pagination .el-pagination__total),
+[class*="-manage"] :deep(.el-pagination .el-pagination__jump) {
+  color: var(--text-secondary) !important;
+}
+
+.admin-page :deep(.el-pagination .el-input__wrapper),
+[class*="-manage"] :deep(.el-pagination .el-input__wrapper) {
+  background: var(--bg-tertiary) !important;
+}
+
+.admin-page :deep(.el-pagination .el-select .el-input),
+[class*="-manage"] :deep(.el-pagination .el-select .el-input) {
+  background: var(--bg-tertiary) !important;
+}
+
+.admin-page :deep(.el-pagination button),
+[class*="-manage"] :deep(.el-pagination button) {
+  background: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* 对话框样式覆盖 */
+.admin-page :deep(.el-dialog),
+[class*="-manage"] :deep(.el-dialog) {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+}
+
+.admin-page :deep(.el-dialog__header),
+[class*="-manage"] :deep(.el-dialog__header) {
+  border-bottom: 1px solid var(--border-color);
+  margin-right: 0;
+  padding: var(--space-lg);
+}
+
+.admin-page :deep(.el-dialog__title),
+[class*="-manage"] :deep(.el-dialog__title) {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.admin-page :deep(.el-dialog__headerbtn .el-dialog__close),
+[class*="-manage"] :deep(.el-dialog__headerbtn .el-dialog__close) {
+  color: var(--text-muted);
+}
+
+.admin-page :deep(.el-dialog__headerbtn:hover .el-dialog__close),
+[class*="-manage"] :deep(.el-dialog__headerbtn:hover .el-dialog__close) {
+  color: var(--color-primary);
+}
+
+.admin-page :deep(.el-dialog__body),
+[class*="-manage"] :deep(.el-dialog__body) {
+  padding: var(--space-lg);
+  color: var(--text-secondary);
+}
+
+.admin-page :deep(.el-dialog__footer),
+[class*="-manage"] :deep(.el-dialog__footer) {
+  border-top: 1px solid var(--border-color);
+  padding: var(--space-md) var(--space-lg);
+}
+
+/* 表单样式覆盖 */
+.admin-page :deep(.el-form-item__label),
+[class*="-manage"] :deep(.el-form-item__label) {
+  color: var(--text-secondary);
+}
+
+.admin-page :deep(.el-input__wrapper),
+[class*="-manage"] :deep(.el-input__wrapper) {
+  background: var(--bg-tertiary) !important;
+  box-shadow: 0 0 0 1px var(--border-color) inset !important;
+}
+
+.admin-page :deep(.el-input__inner),
+[class*="-manage"] :deep(.el-input__inner) {
+  color: var(--text-primary) !important;
+}
+
+.admin-page :deep(.el-input__wrapper:focus-within),
+[class*="-manage"] :deep(.el-input__wrapper:focus-within) {
+  box-shadow: 0 0 0 1px var(--color-primary) inset !important;
+}
+
+.admin-page :deep(.el-textarea__inner),
+[class*="-manage"] :deep(.el-textarea__inner) {
+  background: var(--bg-tertiary) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.admin-page :deep(.el-textarea__inner:focus),
+[class*="-manage"] :deep(.el-textarea__inner:focus) {
+  border-color: var(--color-primary) !important;
+}
+
+.admin-page :deep(.el-select .el-input__wrapper),
+[class*="-manage"] :deep(.el-select .el-input__wrapper) {
+  background: var(--bg-tertiary) !important;
+}
+
+/* 搜索框样式 */
+.search-input :deep(.el-input__wrapper),
+[class*="-manage"] .search-input :deep(.el-input__wrapper) {
+  background: var(--bg-tertiary) !important;
+  border-radius: var(--radius-md) !important;
+}
+
+/* 标签样式 */
+.admin-page :deep(.el-tag),
+[class*="-manage"] :deep(.el-tag) {
+  border: none;
+}
+
+/* 空状态 */
+.empty-state {
+  text-align: center;
+  padding: var(--space-xxl);
+}
+
+.empty-icon {
+  width: 80px;
+  height: 80px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-lg);
+}
+
+.empty-icon .el-icon {
+  font-size: 40px;
+  color: var(--text-muted);
+}
+
+/* 加载状态 */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-tertiary) 25%,
+    var(--bg-secondary) 50%,
+    var(--bg-tertiary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .admin-page {
+    padding: var(--space-md);
+  }
+  
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .toolbar-left,
+  .toolbar-right {
+    width: 100%;
+  }
+  
+  .toolbar-right {
+    justify-content: flex-end;
+  }
+}

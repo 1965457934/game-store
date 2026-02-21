@@ -1,0 +1,81 @@
+# Git Ignore for Game Store Project
+
+# ====================
+# Backend (Java/Spring Boot)
+# ====================
+/game-store-backend/target/
+/game-store-backend/*.class
+/game-store-backend/*.jar
+/game-store-backend/*.war
+/game-store-backend/*.ear
+/game-store-backend/*.zip
+/game-store-backend/*.tar.gz
+/game-store-backend/*.rar
+/game-store-backend/hs_err_pid*
+/game-store-backend/.idea/
+/game-store-backend/*.iml
+/game-store-backend/*.ipr
+/game-store-backend/*.iws
+/game-store-backend/.classpath
+/game-store-backend/.project
+/game-store-backend/.settings/
+/game-store-backend/bin/
+/game-store-backend/build/
+/game-store-backend/gradle/
+/game-store-backend/.gradle/
+/game-store-backend/out/
+
+# ====================
+# Frontend (Vue.js/Node)
+# ====================
+/game-store-frontend/node_modules/
+/game-store-frontend/dist/
+/game-store-frontend/.cache/
+/game-store-frontend/.temp/
+/game-store-frontend/*.log
+/game-store-frontend/npm-debug.log*
+/game-store-frontend/yarn-debug.log*
+/game-store-frontend/yarn-error.log*
+/game-store-frontend/pnpm-debug.log*
+/game-store-frontend/.idea/
+/game-store-frontend/*.suo
+/game-store-frontend/*.ntvs*
+/game-store-frontend/*.njsproj
+/game-store-frontend/*.sln
+/game-store-frontend/*.sw?
+
+# ====================
+# Database
+# ====================
+*.sql
+!sql/*.sql
+
+# ====================
+# Uploads (保留目录但忽略文件)
+# ====================
+/upload/*
+!/upload/.gitkeep
+
+# ====================
+# OS & Editor
+# ====================
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# ====================
+# Environment
+# ====================
+.env
+.env.local
+.env.*.local
+application-local.yml
+application-dev.yml
+application-prod.yml

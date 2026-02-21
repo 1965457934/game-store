@@ -1,0 +1,4 @@
+-- 修复购物车表 total_price 字段
+ALTER TABLE `cart` 
+MODIFY COLUMN `price` DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+MODIFY COLUMN `total_price` DECIMAL(10,2) NOT NULL DEFAULT 0.00;

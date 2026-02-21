@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gamestore.mapper.CommentMapper">
+    
+    <!-- 使用 resultMap 确保 DECIMAL 类型正确映射 -->
+    <resultMap id="commentResultMap" type="com.gamestore.entity.Comment">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="game_id" property="gameId"/>
+        <result column="content" property="content"/>
+        <result column="rating" property="rating" javaType="java.lang.Double" jdbcType="DECIMAL"/>
+        <result column="create_time" property="createTime"/>
+        <result column="username" property="username"/>
+        <result column="avatar" property="avatar"/>
+        <result column="game_name" property="gameName"/>
+    </resultMap>
+    
+    <select id="selectCommentList" resultMap="commentResultMap">
+        SELECT c.id, c.user_id, c.game_id, c.content, c.rating, c.create_time,
+               u.username, u.avatar, g.name as game_name 
+        FROM comment c 
+        LEFT JOIN user u ON c.user_id = u.id 
+        LEFT JOIN game g ON c.game_id = g.id 
+        WHERE 1=1
+        <if test="gameId != null">
+            AND c.game_id = #{gameId}
+        </if>
+        <if test="userId != null">
+            AND c.user_id = #{userId}
+        </if>
+        ORDER BY c.create_time DESC
+    </select>
+    
+    <!-- 获取用户评论（明确指定 resultMap） -->
+    <select id="getUserComment" resultMap="commentResultMap">
+        SELECT c.id, c.user_id, c.game_id, c.content, c.rating, c.create_time,
+               u.username, u.avatar, g.name as game_name 
+        FROM comment c 
+        LEFT JOIN user u ON c.user_id = u.id 
+        LEFT JOIN game g ON c.game_id = g.id 
+        WHERE c.user_id = #{userId} AND c.game_id = #{gameId} 
+        LIMIT 1
+    </select>
+    
+</mapper>

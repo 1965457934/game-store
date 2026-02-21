@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gamestore.mapper.GameMapper">
+    
+    <select id="selectGameList" resultType="com.gamestore.entity.Game">
+        SELECT g.*, c.name as category_name 
+        FROM game g 
+        LEFT JOIN category c ON g.category_id = c.id 
+        WHERE g.deleted = 0 AND g.status = 1
+        <if test="keyword != null and keyword != ''">
+            AND g.name LIKE CONCAT('%', #{keyword}, '%')
+        </if>
+        <if test="categoryId != null">
+            AND g.category_id = #{categoryId}
+        </if>
+        <choose>
+            <when test="sortBy == 'price_asc'">
+                ORDER BY g.price ASC
+            </when>
+            <when test="sortBy == 'price_desc'">
+                ORDER BY g.price DESC
+            </when>
+            <when test="sortBy == 'newest'">
+                ORDER BY g.create_time DESC
+            </when>
+            <when test="sortBy == 'sales'">
+                ORDER BY g.sales DESC
+            </when>
+            <otherwise>
+                ORDER BY g.create_time DESC
+            </otherwise>
+        </choose>
+    </select>
+    
+    <select id="selectGameListForAdmin" resultType="com.gamestore.entity.Game">
+        SELECT g.*, c.name as category_name 
+        FROM game g 
+        LEFT JOIN category c ON g.category_id = c.id 
+        WHERE g.deleted = 0
+        <if test="keyword != null and keyword != ''">
+            AND g.name LIKE CONCAT('%', #{keyword}, '%')
+        </if>
+        ORDER BY g.create_time DESC
+    </select>
+    
+</mapper>
