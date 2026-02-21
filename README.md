@@ -5,6 +5,7 @@
 ## 技术栈
 
 ### 后端
+
 - **框架**: SpringBoot 2.7.x
 - **ORM**: MyBatis-Plus 3.5.x
 - **数据库**: MySQL 8.0
@@ -13,6 +14,7 @@
 - **构建工具**: Maven
 
 ### 前端
+
 - **框架**: Vue 3 + Vue Router 4 + Vuex 4
 - **UI组件**: Element Plus
 - **HTTP**: Axios
@@ -49,6 +51,7 @@ game-store/
 ## 功能模块
 
 ### 前台用户端
+
 - ✅ 用户注册/登录
 - ✅ 游戏浏览/搜索
 - ✅ 游戏详情查看
@@ -57,6 +60,7 @@ game-store/
 - ✅ 评论互动
 
 ### 后台管理端
+
 - ✅ 用户管理
 - ✅ 游戏商品管理
 - ✅ 游戏分类管理
@@ -106,17 +110,17 @@ npm run serve
 
 所有接口统一前缀: `/api`
 
-| 接口 | 说明 |
-|------|------|
-| POST /user/register | 用户注册 |
-| POST /user/login | 用户登录 |
-| GET /user/info | 获取用户信息 |
-| GET /game/list | 游戏列表 |
-| GET /game/detail/{id} | 游戏详情 |
-| GET /cart/list | 购物车列表 |
-| POST /cart/add | 加入购物车 |
-| POST /order/create | 创建订单 |
-| GET /order/list | 订单列表 |
+| 接口                  | 说明         |
+| --------------------- | ------------ |
+| POST /user/register   | 用户注册     |
+| POST /user/login      | 用户登录     |
+| GET /user/info        | 获取用户信息 |
+| GET /game/list        | 游戏列表     |
+| GET /game/detail/{id} | 游戏详情     |
+| GET /cart/list        | 购物车列表   |
+| POST /cart/add        | 加入购物车   |
+| POST /order/create    | 创建订单     |
+| GET /order/list       | 订单列表     |
 
 ## 开发计划
 
@@ -129,8 +133,3 @@ npm run serve
 - [x] 后台管理
 - [ ] 支付集成
 - [ ] 邮件通知
-
-## 作者
-
-- 王凯迪
-- 无锡学院 - 计算机科学与技术专业
