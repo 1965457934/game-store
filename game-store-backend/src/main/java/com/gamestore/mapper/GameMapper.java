@@ -32,4 +32,13 @@ public interface GameMapper extends BaseMapper<Game> {
     
     @Update("UPDATE game SET rating = #{rating} WHERE id = #{gameId}")
     int updateRating(@Param("gameId") Long gameId, @Param("rating") Double rating);
+
+    @Update("UPDATE game SET stock = stock - #{quantity}, sales = sales + #{quantity} " +
+            "WHERE id = #{gameId} AND stock >= #{quantity}")
+    int reserveStock(@Param("gameId") Long gameId, @Param("quantity") Integer quantity);
+
+    @Update("UPDATE game SET stock = stock + #{quantity}, " +
+            "sales = CASE WHEN sales >= #{quantity} THEN sales - #{quantity} ELSE 0 END " +
+            "WHERE id = #{gameId}")
+    int releaseStock(@Param("gameId") Long gameId, @Param("quantity") Integer quantity);
 }

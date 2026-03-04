@@ -23,7 +23,7 @@ public interface OrderMapper extends BaseMapper<Order> {
     
     List<OrderItem> selectOrderItems(Long orderId);
     
-    @Update("UPDATE order_info SET status = 1, pay_time = NOW() WHERE order_no = #{orderNo}")
+    @Update("UPDATE order_info SET status = 1, pay_time = NOW() WHERE order_no = #{orderNo} AND status = 0")
     int payOrder(String orderNo);
     
     /**

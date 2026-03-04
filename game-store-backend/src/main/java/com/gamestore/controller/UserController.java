@@ -15,13 +15,13 @@ import java.util.Map;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    
+
     @Autowired
     private UserService userService;
-    
+
     @Autowired
     private JwtUtil jwtUtil;
-    
+
     @PostMapping("/register")
     public Result<?> register(@RequestBody User user) {
         try {
@@ -31,7 +31,7 @@ public class UserController {
             return Result.error(e.getMessage());
         }
     }
-    
+
     @PostMapping("/login")
     public Result<?> login(@RequestBody Map<String, String> params) {
         try {
@@ -47,13 +47,13 @@ public class UserController {
             return Result.error(e.getMessage());
         }
     }
-    
+
     @GetMapping("/info")
     public Result<?> getUserInfo(HttpServletRequest request) {
         Long userId = (Long) request.getAttribute("userId");
         return Result.success(userService.getUserInfo(userId));
     }
-    
+
     @PutMapping("/update")
     public Result<?> updateUserInfo(@RequestBody User user, HttpServletRequest request) {
         Long userId = (Long) request.getAttribute("userId");
@@ -63,7 +63,7 @@ public class UserController {
         }
         return Result.error("更新失败");
     }
-    
+
     @PutMapping("/password")
     public Result<?> updatePassword(@RequestBody Map<String, String> params, HttpServletRequest request) {
         Long userId = (Long) request.getAttribute("userId");
@@ -78,7 +78,7 @@ public class UserController {
             return Result.error(e.getMessage());
         }
     }
-    
+
     @GetMapping("/list")
     public Result<?> getUserList(
             @RequestParam(defaultValue = "1") Integer page,
@@ -91,12 +91,12 @@ public class UserController {
         Page<User> pageInfo = userService.page(new Page<>(page, size));
         return Result.success(pageInfo);
     }
-    
+
     @PostMapping("/freeze/{id}")
     public Result<?> freezeUser(@PathVariable Long id, HttpServletRequest request) {
         Integer role = (Integer) request.getAttribute("role");
         Long userId = (Long) request.getAttribute("userId");
-        if (role != 1) {
+        if (role == null || role != 1) {
             return Result.error(403, "无权操作");
         }
         if (id.equals(userId)) {
@@ -107,11 +107,11 @@ public class UserController {
         }
         return Result.error("冻结失败");
     }
-    
+
     @PostMapping("/unfreeze/{id}")
     public Result<?> unfreezeUser(@PathVariable Long id, HttpServletRequest request) {
         Integer role = (Integer) request.getAttribute("role");
-        if (role != 1) {
+        if (role == null || role != 1) {
             return Result.error(403, "无权操作");
         }
         if (userService.unfreezeUser(id)) {
