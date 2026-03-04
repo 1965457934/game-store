@@ -633,12 +633,14 @@ export default {
 }
 
 .user-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  background: linear-gradient(160deg, rgba(30, 47, 64, 0.84) 0%, rgba(20, 31, 44, 0.96) 100%);
+  border: 1px solid rgba(84, 123, 157, 0.35);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
   text-align: center;
   margin-bottom: var(--space-lg);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(8px);
 }
 
 .avatar-wrapper {
@@ -702,10 +704,11 @@ export default {
 
 /* 导航菜单 */
 .profile-nav {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  background: linear-gradient(160deg, rgba(30, 47, 64, 0.84) 0%, rgba(20, 31, 44, 0.96) 100%);
+  border: 1px solid rgba(84, 123, 157, 0.35);
   border-radius: var(--radius-lg);
   overflow: hidden;
+  box-shadow: var(--shadow-soft);
 }
 
 .nav-item {
@@ -716,7 +719,8 @@ export default {
   color: var(--text-secondary);
   cursor: pointer;
   transition: all var(--transition-fast);
-  border-left: 3px solid transparent;
+  border-left: 2px solid transparent;
+  border-bottom: 1px solid rgba(70, 101, 129, 0.28);
 }
 
 .nav-item:hover {
@@ -728,6 +732,7 @@ export default {
   background: rgba(26, 159, 255, 0.1);
   color: var(--color-primary);
   border-left-color: var(--color-primary);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .nav-item .el-icon:first-child {
@@ -752,10 +757,12 @@ export default {
 
 /* 右侧内容 */
 .profile-content {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  background: linear-gradient(160deg, rgba(30, 47, 64, 0.82) 0%, rgba(20, 31, 44, 0.96) 100%);
+  border: 1px solid rgba(84, 123, 157, 0.35);
   border-radius: var(--radius-lg);
   overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(8px);
 }
 
 .content-section {
@@ -859,13 +866,19 @@ export default {
 }
 
 .stat-card {
-  background: var(--bg-secondary);
+  background: rgba(22, 34, 48, 0.92);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
   display: flex;
   align-items: center;
   gap: var(--space-md);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(102, 192, 244, 0.5);
 }
 
 .stat-icon {
@@ -918,8 +931,9 @@ export default {
   align-items: flex-start;
   gap: var(--space-md);
   padding: var(--space-md);
-  background: var(--bg-secondary);
+  background: rgba(22, 34, 48, 0.92);
   border-radius: var(--radius-md);
+  border: 1px solid rgba(70, 101, 129, 0.28);
 }
 
 .activity-icon {

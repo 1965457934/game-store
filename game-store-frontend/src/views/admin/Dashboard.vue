@@ -332,7 +332,7 @@ export default {
 }
 
 .stat-card {
-  background: var(--bg-card);
+  background: linear-gradient(160deg, rgba(30, 47, 64, 0.86) 0%, rgba(20, 31, 44, 0.96) 100%);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
@@ -343,12 +343,14 @@ export default {
   position: relative;
   overflow: hidden;
   transition: all var(--transition-normal);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(8px);
 }
 
 .stat-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   border-color: var(--color-primary);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .stat-icon {
@@ -397,10 +399,11 @@ export default {
 }
 
 .chart-card {
-  background: var(--bg-card);
+  background: linear-gradient(160deg, rgba(30, 47, 64, 0.82) 0%, rgba(20, 31, 44, 0.96) 100%);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
+  box-shadow: var(--shadow-soft);
 }
 
 .card-header {
@@ -421,10 +424,11 @@ export default {
 
 /* 最近订单 */
 .recent-orders {
-  background: var(--bg-card);
+  background: linear-gradient(160deg, rgba(30, 47, 64, 0.82) 0%, rgba(20, 31, 44, 0.96) 100%);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
+  box-shadow: var(--shadow-soft);
 }
 
 .order-list {
@@ -438,14 +442,14 @@ export default {
   align-items: center;
   gap: var(--space-md);
   padding: var(--space-md);
-  background: var(--bg-secondary);
+  background: rgba(22, 34, 48, 0.9);
   border-radius: var(--radius-md);
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
 .order-item:hover {
-  background: var(--bg-tertiary);
+  background: rgba(35, 57, 77, 0.95);
 }
 
 .order-info {

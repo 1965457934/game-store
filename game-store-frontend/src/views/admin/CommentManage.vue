@@ -110,13 +110,15 @@ export default {
 }
 
 .table-container {
-  background: #2a2f38;
-  border: 1px solid #3d444d;
+  background: linear-gradient(160deg, rgba(30, 47, 64, 0.84) 0%, rgba(20, 31, 44, 0.96) 100%);
+  border: 1px solid rgba(84, 123, 157, 0.36);
   border-radius: 8px;
   padding: 16px;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(8px);
 }
 
 /* 直接选择器 - 不影响布局计算 */
@@ -133,9 +135,9 @@ export default {
 }
 
 .comment-manage .el-table__header th {
-  background: #1e2329 !important;
+  background: rgba(20, 33, 46, 0.96) !important;
   color: #fff !important;
-  border-bottom: 1px solid #3d444d !important;
+  border-bottom: 1px solid rgba(84, 123, 157, 0.45) !important;
 }
 
 .comment-manage .el-table__body-wrapper {
@@ -147,13 +149,13 @@ export default {
 }
 
 .comment-manage .el-table__body td {
-  background: #2a2f38 !important;
+  background: rgba(22, 34, 48, 0.94) !important;
   color: #c0c0c0 !important;
-  border-bottom: 1px solid #3d444d !important;
+  border-bottom: 1px solid rgba(70, 101, 129, 0.34) !important;
 }
 
 .comment-manage .el-table--enable-row-hover .el-table__body tr:hover > td {
-  background: #353b45 !important;
+  background: rgba(35, 57, 77, 0.95) !important;
 }
 
 .comment-manage .el-table__empty-block {

@@ -448,12 +448,13 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: var(--space-md) var(--space-xl);
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  background: linear-gradient(160deg, rgba(30, 47, 64, 0.82) 0%, rgba(20, 31, 44, 0.96) 100%);
+  border: 1px solid rgba(84, 123, 157, 0.35);
   border-radius: var(--radius-lg);
   cursor: pointer;
   transition: all var(--transition-fast);
   min-width: 100px;
+  box-shadow: var(--shadow-soft);
 }
 
 .stat-item:hover,
@@ -483,16 +484,18 @@ export default {
 }
 
 .order-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  background: linear-gradient(160deg, rgba(30, 47, 64, 0.82) 0%, rgba(20, 31, 44, 0.96) 100%);
+  border: 1px solid rgba(84, 123, 157, 0.35);
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: all var(--transition-normal);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(8px);
 }
 
 .order-card:hover {
-  border-color: var(--border-color);
-  box-shadow: var(--shadow-md);
+  border-color: rgba(102, 192, 244, 0.45);
+  box-shadow: var(--shadow-card-hover);
 }
 
 /* 订单头部 */
@@ -501,7 +504,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: var(--space-md) var(--space-lg);
-  background: var(--bg-secondary);
+  background: rgba(22, 34, 48, 0.95);
   border-bottom: 1px solid var(--border-color);
   flex-wrap: wrap;
   gap: var(--space-sm);
@@ -554,7 +557,7 @@ export default {
 }
 
 .order-item:hover {
-  background: var(--bg-secondary);
+  background: rgba(35, 57, 77, 0.92);
   margin: 0 calc(-1 * var(--space-lg));
   padding-left: var(--space-lg);
   padding-right: var(--space-lg);
@@ -608,7 +611,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: var(--space-md) var(--space-lg);
-  background: var(--bg-secondary);
+  background: rgba(22, 34, 48, 0.95);
   border-top: 1px solid var(--border-color);
   flex-wrap: wrap;
   gap: var(--space-md);
@@ -646,9 +649,10 @@ export default {
 .empty-state {
   text-align: center;
   padding: var(--space-xxl);
-  background: var(--bg-card);
+  background: linear-gradient(160deg, rgba(30, 47, 64, 0.82) 0%, rgba(20, 31, 44, 0.96) 100%);
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(84, 123, 157, 0.35);
+  box-shadow: var(--shadow-soft);
 }
 
 .empty-icon {
@@ -730,9 +734,10 @@ export default {
 
 /* 订单详情弹窗 */
 .order-detail-dialog :deep(.el-dialog) {
-  background: var(--bg-card);
+  background: linear-gradient(160deg, rgba(30, 47, 64, 0.88) 0%, rgba(20, 31, 44, 0.98) 100%);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
 }
 
 .order-detail-dialog :deep(.el-dialog__title) {

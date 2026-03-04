@@ -16,10 +16,22 @@ html {
 
 body {
   font-family: var(--font-family);
-  background: var(--bg-primary);
+  background: var(--gradient-page);
   color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;
+  letter-spacing: 0.1px;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(26, 159, 255, 0.09) 0%, transparent 25%),
+    radial-gradient(circle at 85% 76%, rgba(164, 208, 7, 0.08) 0%, transparent 24%);
 }
 
 /* 深色主题下的 Element Plus 覆盖 */
@@ -41,10 +53,11 @@ body {
 
 /* 卡片样式 */
 .el-card {
-  background: var(--bg-card) !important;
+  background: var(--gradient-surface) !important;
   border: 1px solid var(--border-color) !important;
   color: var(--text-primary) !important;
   transition: all var(--transition-normal);
+  box-shadow: var(--shadow-soft), var(--shadow-inset);
 }
 
 .el-card:hover {
@@ -66,9 +79,13 @@ body {
 }
 
 .el-button--primary:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   box-shadow: var(--shadow-glow);
   color: white !important;
+}
+
+.el-button {
+  font-weight: 600;
 }
 
 .el-button--danger {
@@ -100,6 +117,11 @@ body {
   background: var(--bg-tertiary) !important;
   box-shadow: 0 0 0 1px var(--border-color) inset !important;
   border-radius: var(--radius-md) !important;
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.el-input__wrapper:focus-within {
+  box-shadow: 0 0 0 1px var(--color-primary) inset, 0 0 0 4px rgba(26, 159, 255, 0.12) !important;
 }
 
 .el-input__inner {

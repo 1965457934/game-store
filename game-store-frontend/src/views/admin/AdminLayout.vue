@@ -184,14 +184,14 @@ export default {
 .admin-layout {
   display: flex;
   min-height: 100vh;
-  background: var(--bg-primary);
+  background: linear-gradient(180deg, #111821 0%, #171a21 45%, #121921 100%);
 }
 
 /* 侧边栏 */
 .sidebar {
   width: 250px;
-  background: var(--bg-secondary);
-  border-right: 1px solid var(--border-color);
+  background: linear-gradient(180deg, rgba(26, 39, 55, 0.94) 0%, rgba(20, 31, 44, 0.98) 100%);
+  border-right: 1px solid rgba(84, 123, 157, 0.42);
   display: flex;
   flex-direction: column;
   transition: width 0.3s ease;
@@ -200,6 +200,7 @@ export default {
   left: 0;
   bottom: 0;
   z-index: 100;
+  box-shadow: 10px 0 24px rgba(0, 0, 0, 0.24);
 }
 
 .sidebar.collapsed {
@@ -259,20 +260,24 @@ export default {
   color: var(--text-secondary);
   text-decoration: none;
   transition: all var(--transition-fast);
-  border-left: 3px solid transparent;
+  border-left: 2px solid transparent;
   margin: 0 var(--space-sm);
-  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
 }
 
 .menu-item:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(26, 159, 255, 0.1);
   color: var(--text-primary);
+  border-color: rgba(102, 192, 244, 0.4);
 }
 
 .menu-item.active {
   background: rgba(26, 159, 255, 0.1);
   color: var(--color-primary);
-  border-left-color: var(--color-primary);
+  border-left-color: transparent;
+  border-color: rgba(102, 192, 244, 0.45);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .menu-icon {
@@ -331,8 +336,8 @@ export default {
 /* 顶部栏 */
 .top-bar {
   height: 64px;
-  background: var(--bg-secondary);
-  border-bottom: 1px solid var(--border-color);
+  background: rgba(27, 40, 56, 0.82);
+  border-bottom: 1px solid rgba(84, 123, 157, 0.38);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -340,6 +345,7 @@ export default {
   position: sticky;
   top: 0;
   z-index: 99;
+  backdrop-filter: blur(12px);
 }
 
 .breadcrumb :deep(.el-breadcrumb__item) {
@@ -427,6 +433,7 @@ export default {
   flex: 1;
   padding: var(--space-xl);
   overflow-y: auto;
+  background: linear-gradient(180deg, rgba(15, 22, 32, 0.35) 0%, rgba(15, 22, 32, 0.1) 100%);
 }
 
 /* 通知弹窗 */

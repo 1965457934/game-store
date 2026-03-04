@@ -434,10 +434,11 @@ export default {
 .auth-card {
   width: 100%;
   max-width: 460px;
-  background: var(--bg-card) !important;
-  border: 1px solid var(--border-color) !important;
+  background: linear-gradient(160deg, rgba(30, 47, 64, 0.88) 0%, rgba(20, 31, 44, 0.96) 100%) !important;
+  border: 1px solid rgba(84, 123, 157, 0.4) !important;
   border-radius: var(--radius-xl) !important;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-soft);
 }
 
 .auth-card :deep(.el-card__body) {
@@ -466,6 +467,7 @@ export default {
   box-shadow: 0 0 0 1px var(--border-color) inset !important;
   border-radius: var(--radius-md) !important;
   padding: 4px 16px !important;
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
 }
 
 .auth-form :deep(.el-input__inner) {
@@ -479,7 +481,7 @@ export default {
 }
 
 .auth-form :deep(.el-input__wrapper:focus-within) {
-  box-shadow: 0 0 0 1px var(--color-primary) inset !important;
+  box-shadow: 0 0 0 1px var(--color-primary) inset, 0 0 0 4px rgba(26, 159, 255, 0.12) !important;
 }
 
 .auth-form :deep(.el-input__wrapper:focus-within .el-input__prefix) {
@@ -509,10 +511,15 @@ export default {
   align-items: center;
   justify-content: center;
   gap: var(--space-sm);
+  box-shadow: var(--shadow-glow);
 }
 
 .submit-btn .el-icon {
   font-size: 18px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-1px);
 }
 
 /* 底部链接 */

@@ -229,9 +229,10 @@ export default {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--bg-secondary);
-  border-bottom: 1px solid var(--border-color);
-  backdrop-filter: blur(10px);
+  background: rgba(27, 40, 56, 0.82);
+  border-bottom: 1px solid rgba(86, 123, 156, 0.35);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
 }
 
 .header-content {
@@ -284,14 +285,17 @@ export default {
   color: var(--text-secondary);
   text-decoration: none;
   font-weight: 500;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
   transition: all var(--transition-normal);
 }
 
 .nav-link:hover,
 .nav-link.active {
   color: var(--color-primary);
-  background: rgba(26, 159, 255, 0.1);
+  border-color: rgba(102, 192, 244, 0.4);
+  background: rgba(26, 159, 255, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 /* 搜索框 */
@@ -304,6 +308,7 @@ export default {
   background: var(--bg-tertiary) !important;
   border-radius: var(--radius-full) !important;
   padding-left: var(--space-md) !important;
+  border: 1px solid rgba(102, 192, 244, 0.2);
 }
 
 /* 用户操作区 */
@@ -319,6 +324,7 @@ export default {
   border: none !important;
   color: var(--text-secondary) !important;
   transition: all var(--transition-normal);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .icon-btn:hover {
@@ -401,7 +407,7 @@ export default {
 
 /* 页脚 */
 .footer {
-  background: var(--bg-secondary);
+  background: linear-gradient(180deg, rgba(27, 40, 56, 0.9) 0%, rgba(20, 29, 40, 0.98) 100%);
   border-top: 1px solid var(--border-color);
   padding: var(--space-xl) 0 var(--space-md);
 }

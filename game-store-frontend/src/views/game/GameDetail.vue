@@ -558,6 +558,11 @@ export default {
   grid-template-columns: 1.2fr 1fr;
   gap: var(--space-xl);
   margin-bottom: var(--space-xl);
+  background: linear-gradient(160deg, rgba(20, 31, 45, 0.6) 0%, rgba(14, 23, 34, 0.5) 100%);
+  border: 1px solid rgba(61, 106, 142, 0.35);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-soft);
 }
 
 /* 媒体区 */
@@ -680,10 +685,11 @@ export default {
 
 /* 价格区 */
 .price-section {
-  background: var(--bg-card);
+  background: linear-gradient(160deg, rgba(30, 49, 66, 0.82) 0%, rgba(21, 34, 47, 0.94) 100%);
   padding: var(--space-lg);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-soft);
 }
 
 .discount-info {
@@ -830,10 +836,11 @@ export default {
 }
 
 .content-section {
-  background: var(--bg-card);
+  background: var(--gradient-surface);
   padding: var(--space-xl);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-soft);
 }
 
 .content-section .section-title {
@@ -857,10 +864,11 @@ export default {
 
 /* 评论区 */
 .comments-section {
-  background: var(--bg-card);
+  background: var(--gradient-surface);
   padding: var(--space-xl);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-soft);
 }
 
 .section-header {
@@ -981,10 +989,11 @@ export default {
 
 /* 评论表单 */
 .comment-form {
-  background: var(--bg-secondary);
+  background: linear-gradient(160deg, rgba(28, 43, 58, 0.76) 0%, rgba(21, 31, 45, 0.92) 100%);
   padding: var(--space-lg);
   border-radius: var(--radius-lg);
   margin-bottom: var(--space-xl);
+  border: 1px solid rgba(61, 106, 142, 0.35);
 }
 
 .form-header {
@@ -1102,6 +1111,7 @@ export default {
   border-radius: var(--radius-md);
   padding: var(--space-md);
   margin: 0 calc(-1 * var(--space-md));
+  border: 1px solid rgba(102, 192, 244, 0.3);
 }
 
 .comment-time {
@@ -1172,6 +1182,7 @@ export default {
 @media (max-width: 992px) {
   .game-main {
     grid-template-columns: 1fr;
+    padding: var(--space-md);
   }
   
   .game-title {

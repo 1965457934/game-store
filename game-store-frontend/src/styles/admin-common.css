@@ -3,6 +3,16 @@
 /* 页面容器 */
 .admin-page {
   padding: var(--space-lg);
+  position: relative;
+}
+
+.admin-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(26, 159, 255, 0.04) 0%, transparent 20%);
+  border-radius: var(--radius-lg);
 }
 
 /* 页面头部 */
@@ -22,6 +32,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+  letter-spacing: 0.4px;
 }
 
 .page-title .el-icon {
@@ -47,19 +58,21 @@
 
 /* 数据卡片 */
 .data-card {
-  background: var(--bg-card);
+  background: var(--gradient-surface);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
   max-height: 600px;
   overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(10px);
 }
 
 /* 表格样式覆盖 - 强制深色主题 */
 /* 全局表格样式 - 应用于所有管理页面 */
 .admin-page :deep(.el-table),
 [class*="-manage"] :deep(.el-table) {
-  background: var(--bg-card) !important;
+  background: linear-gradient(160deg, rgba(26, 41, 58, 0.8) 0%, rgba(18, 29, 42, 0.95) 100%) !important;
   color: var(--text-primary) !important;
 }
 
@@ -77,10 +90,10 @@
 
 .admin-page :deep(.el-table th.el-table__cell),
 [class*="-manage"] :deep(.el-table th.el-table__cell) {
-  background: var(--bg-secondary) !important;
+  background: rgba(20, 33, 46, 0.95) !important;
   color: var(--text-primary) !important;
   font-weight: 600;
-  border-bottom: 1px solid var(--border-color) !important;
+  border-bottom: 1px solid rgba(84, 123, 157, 0.45) !important;
 }
 
 /* 表格主体 */
@@ -104,9 +117,9 @@
 .admin-page :deep(.el-table__body td.el-table__cell),
 [class*="-manage"] :deep(.el-table td.el-table__cell),
 [class*="-manage"] :deep(.el-table__body td.el-table__cell) {
-  background: var(--bg-card) !important;
+  background: rgba(22, 34, 48, 0.95) !important;
   color: var(--text-secondary) !important;
-  border-bottom: 1px solid var(--border-color) !important;
+  border-bottom: 1px solid rgba(70, 101, 129, 0.34) !important;
 }
 
 /* 斑马纹样式 */
@@ -118,7 +131,7 @@
 /* 悬停效果 */
 .admin-page :deep(.el-table--enable-row-hover .el-table__body tr:hover > td.el-table__cell),
 [class*="-manage"] :deep(.el-table--enable-row-hover .el-table__body tr:hover > td.el-table__cell) {
-  background: var(--bg-tertiary) !important;
+  background: rgba(36, 58, 78, 0.92) !important;
 }
 
 /* 空状态 */
@@ -219,9 +232,10 @@
 /* 对话框样式覆盖 */
 .admin-page :deep(.el-dialog),
 [class*="-manage"] :deep(.el-dialog) {
-  background: var(--bg-card) !important;
+  background: linear-gradient(160deg, rgba(28, 43, 58, 0.92) 0%, rgba(20, 31, 44, 0.98) 100%) !important;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
 }
 
 .admin-page :deep(.el-dialog__header),

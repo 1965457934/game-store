@@ -259,17 +259,19 @@ export default {
 <style scoped>
 .home {
   padding-bottom: var(--space-xl);
+  position: relative;
 }
 
 /* Banner 轮播区 */
 .banner-section {
   padding: var(--space-xl) 0;
-  background: var(--gradient-dark);
+  background: linear-gradient(180deg, rgba(17, 24, 33, 0.2) 0%, rgba(17, 24, 33, 0.55) 100%);
 }
 
 .banner-carousel {
   border-radius: var(--radius-lg);
   overflow: hidden;
+  box-shadow: var(--shadow-lg);
 }
 
 .banner-carousel :deep(.el-carousel__container) {
@@ -379,6 +381,20 @@ export default {
   padding: var(--space-xxl) 0;
 }
 
+.hot-games,
+.new-games {
+  position: relative;
+}
+
+.hot-games::before,
+.new-games::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(26, 159, 255, 0.04) 0%, transparent 25%);
+}
+
 .section-header {
   display: flex;
   justify-content: space-between;
@@ -432,12 +448,13 @@ export default {
 
 /* 游戏卡片 */
 .game-card {
-  background: var(--bg-card);
+  background: var(--gradient-surface);
   border-radius: var(--radius-lg);
   overflow: hidden;
   cursor: pointer;
   transition: all var(--transition-normal);
   border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-soft);
 }
 
 .game-card:hover {
@@ -513,6 +530,7 @@ export default {
 /* 卡片信息 */
 .card-info {
   padding: var(--space-md);
+  background: linear-gradient(180deg, rgba(11, 18, 28, 0) 0%, rgba(11, 18, 28, 0.5) 100%);
 }
 
 .game-name {
@@ -563,7 +581,7 @@ export default {
 
 /* 特色展示 */
 .features {
-  background: var(--bg-secondary);
+  background: linear-gradient(180deg, rgba(27, 40, 56, 0.72) 0%, rgba(21, 31, 43, 0.92) 100%);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
 }
@@ -577,6 +595,10 @@ export default {
 .feature-item {
   text-align: center;
   padding: var(--space-lg);
+  border: 1px solid rgba(61, 106, 142, 0.45);
+  border-radius: var(--radius-lg);
+  background: rgba(17, 25, 36, 0.4);
+  backdrop-filter: blur(8px);
 }
 
 .feature-icon {

@@ -297,10 +297,12 @@ export default {
   gap: var(--space-md);
   margin-bottom: var(--space-xl);
   padding: var(--space-md);
-  background: var(--bg-card);
+  background: linear-gradient(160deg, rgba(26, 41, 58, 0.82) 0%, rgba(18, 29, 42, 0.9) 100%);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-color);
   flex-wrap: wrap;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(8px);
 }
 
 .search-box {
@@ -349,12 +351,13 @@ export default {
 }
 
 .game-card {
-  background: var(--bg-card);
+  background: var(--gradient-surface);
   border-radius: var(--radius-lg);
   overflow: hidden;
   cursor: pointer;
   transition: all var(--transition-normal);
   border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-soft);
 }
 
 .game-card:hover {
@@ -378,7 +381,7 @@ export default {
 .card-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: linear-gradient(180deg, rgba(3, 11, 19, 0.2) 0%, rgba(3, 11, 19, 0.78) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -411,6 +414,7 @@ export default {
 /* 卡片信息 */
 .card-info {
   padding: var(--space-md);
+  background: linear-gradient(180deg, rgba(11, 18, 28, 0) 0%, rgba(11, 18, 28, 0.48) 100%);
 }
 
 .game-name {
@@ -528,6 +532,7 @@ export default {
   justify-content: center;
   padding-top: var(--space-xl);
   border-top: 1px solid var(--border-color);
+  margin-top: var(--space-md);
 }
 
 .pagination {

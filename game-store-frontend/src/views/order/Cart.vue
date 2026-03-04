@@ -369,10 +369,12 @@ export default {
 
 /* 购物车内容 */
 .cart-content {
-  background: var(--bg-card);
+  background: linear-gradient(160deg, rgba(30, 47, 64, 0.82) 0%, rgba(20, 31, 44, 0.96) 100%);
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(84, 123, 157, 0.35);
   overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(8px);
 }
 
 /* 商品列表 */
@@ -385,15 +387,16 @@ export default {
   align-items: center;
   gap: var(--space-md);
   padding: var(--space-md);
-  background: var(--bg-secondary);
+  background: rgba(22, 34, 48, 0.92);
   border-radius: var(--radius-md);
   margin-bottom: var(--space-md);
   transition: all var(--transition-fast);
-  border: 1px solid transparent;
+  border: 1px solid rgba(70, 101, 129, 0.28);
 }
 
 .cart-item:hover {
-  border-color: var(--border-color);
+  border-color: rgba(102, 192, 244, 0.45);
+  transform: translateY(-1px);
 }
 
 .cart-item:last-child {
@@ -428,7 +431,7 @@ export default {
 .image-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: linear-gradient(180deg, rgba(4, 10, 16, 0.25) 0%, rgba(4, 10, 16, 0.76) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -527,7 +530,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: var(--space-lg) var(--space-xl);
-  background: var(--bg-secondary);
+  background: rgba(22, 34, 48, 0.96);
   border-top: 1px solid var(--border-color);
   flex-wrap: wrap;
   gap: var(--space-md);
@@ -595,9 +598,10 @@ export default {
 .empty-state {
   text-align: center;
   padding: var(--space-xxl);
-  background: var(--bg-card);
+  background: linear-gradient(160deg, rgba(30, 47, 64, 0.82) 0%, rgba(20, 31, 44, 0.96) 100%);
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(84, 123, 157, 0.35);
+  box-shadow: var(--shadow-soft);
 }
 
 .empty-icon {
@@ -652,12 +656,13 @@ export default {
 }
 
 .recommend-card {
-  background: var(--bg-card);
+  background: linear-gradient(160deg, rgba(30, 47, 64, 0.82) 0%, rgba(20, 31, 44, 0.96) 100%);
   border-radius: var(--radius-md);
   overflow: hidden;
   cursor: pointer;
   transition: all var(--transition-normal);
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(84, 123, 157, 0.32);
+  box-shadow: var(--shadow-soft);
 }
 
 .recommend-card:hover {

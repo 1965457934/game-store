@@ -36,6 +36,11 @@
   --gradient-dark: linear-gradient(180deg, #1b2838 0%, #171a21 100%);
   --gradient-card: linear-gradient(180deg, #2a475e 0%, #1b2838 100%);
   --gradient-glow: linear-gradient(135deg, rgba(102, 192, 244, 0.3) 0%, transparent 100%);
+  --gradient-surface: linear-gradient(160deg, rgba(29, 47, 66, 0.88) 0%, rgba(22, 32, 45, 0.92) 100%);
+  --gradient-page:
+    radial-gradient(circle at 8% 10%, rgba(26, 159, 255, 0.18) 0%, transparent 28%),
+    radial-gradient(circle at 90% 86%, rgba(76, 175, 80, 0.12) 0%, transparent 26%),
+    linear-gradient(180deg, #111821 0%, #171a21 45%, #121921 100%);
   
   /* ========== 间距系统 ========== */
   --space-xs: 4px;
@@ -59,6 +64,8 @@
   --shadow-glow: 0 0 20px rgba(102, 192, 244, 0.3);
   --shadow-card: 0 4px 8px rgba(0, 0, 0, 0.3);
   --shadow-card-hover: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --shadow-soft: 0 10px 26px rgba(0, 0, 0, 0.28);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.06);
   
   /* ========== 动画系统 ========== */
   --transition-fast: 0.15s ease;
@@ -67,7 +74,7 @@
   
   /* ========== 字体系统 ========== */
   --font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
-    'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+    'Microsoft YaHei', '微软雅黑', 'Segoe UI', 'Avenir Next', Arial, sans-serif;
   --font-size-xs: 12px;
   --font-size-sm: 14px;
   --font-size-md: 16px;
