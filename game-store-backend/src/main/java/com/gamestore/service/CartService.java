@@ -11,9 +11,9 @@ public interface CartService extends IService<Cart> {
     
     boolean addToCart(Long userId, Long gameId, Integer quantity);
     
-    boolean updateCart(Long cartId, Integer quantity);
+    boolean updateCart(Long cartId, Long userId, Integer quantity);
     
     boolean clearCart(Long userId);
     
-    boolean removeFromCart(Long cartId);
+    boolean removeFromCart(Long cartId, Long userId);
 }

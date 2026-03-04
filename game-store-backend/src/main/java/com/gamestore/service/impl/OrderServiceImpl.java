@@ -38,6 +38,16 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
             throw new RuntimeException("购物车为空");
         }
         
+        for (Cart cart : cartList) {
+            Game game = gameMapper.selectById(cart.getGameId());
+            if (game == null) {
+                throw new RuntimeException("存在无效游戏，无法创建订单");
+            }
+            if (game.getStock() == null || game.getStock() < cart.getQuantity()) {
+                throw new RuntimeException("《" + cart.getGameName() + "》库存不足");
+            }
+        }
+        
         BigDecimal totalAmount = BigDecimal.ZERO;
         for (Cart cart : cartList) {
             totalAmount = totalAmount.add(cart.getTotalPrice());
@@ -77,6 +87,13 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     
     @Override
     public boolean payOrder(String orderNo) {
+        Order order = lambdaQuery().eq(Order::getOrderNo, orderNo).one();
+        if (order == null) {
+            throw new RuntimeException("订单不存在");
+        }
+        if (order.getStatus() != 0) {
+            throw new RuntimeException("该订单状态不可支付");
+        }
         return orderMapper.payOrder(orderNo) > 0;
     }
     

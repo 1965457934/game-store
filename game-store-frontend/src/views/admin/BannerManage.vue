@@ -47,7 +47,7 @@
         <el-table-column label="操作" width="200" align="center">
           <template #default="{ row }">
             <el-button type="primary" link @click="editBanner(row)">编辑</el-button>
-            <el-button type="danger" link @click="deleteBanner(row.id)">删除</el-button>
+            <el-button type="danger" link @click="handleDeleteBanner(row.id)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -127,10 +127,10 @@
 </template>
 
 <script>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Picture, Plus, Link } from '@element-plus/icons-vue'
-import { getBannerList, addBanner, updateBanner, deleteBanner } from '../../api/banner'
+import { getAllBanners, addBanner, updateBanner, deleteBanner as deleteBannerApi } from '../../api/banner'
 import { getGameListForAdmin } from '../../api/game'
 
 export default {
@@ -161,7 +161,7 @@ export default {
     const loadBanners = async () => {
       loading.value = true
       try {
-        const res = await getBannerList()
+        const res = await getAllBanners()
         banners.value = res
       } finally {
         loading.value = false
@@ -215,10 +215,10 @@ export default {
       }
     }
 
-    const deleteBanner = async (id) => {
+    const handleDeleteBanner = async (id) => {
       try {
         await ElMessageBox.confirm('确定要删除这个轮播图吗？', '确认删除', { type: 'warning' })
-        await deleteBanner(id)
+        await deleteBannerApi(id)
         ElMessage.success('删除成功')
         loadBanners()
       } catch (e) {
@@ -275,7 +275,7 @@ export default {
       showAddDialog,
       editBanner,
       saveBanner,
-      deleteBanner,
+      handleDeleteBanner,
       handleUploadSuccess,
       handleUploadError,
       beforeUpload

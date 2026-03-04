@@ -202,9 +202,13 @@ public class CommentController {
         if (role != 1) {
             return Result.error(403, "无权操作");
         }
-        if (commentService.removeById(id)) {
-            return Result.success("删除成功", null);
+        try {
+            if (commentService.adminDeleteComment(id)) {
+                return Result.success("删除成功", null);
+            }
+            return Result.error("删除失败");
+        } catch (Exception e) {
+            return Result.error(e.getMessage());
         }
-        return Result.error("删除失败");
     }
 }

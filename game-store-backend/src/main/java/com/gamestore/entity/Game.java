@@ -33,7 +33,7 @@ public class Game {
     
     private Integer sales;
     
-    private Integer status; // 0-上架 1-下架
+    private Integer status; // 1-上架 0-下架
     
     private Double rating; // 平均评分 0-5
     

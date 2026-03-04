@@ -35,13 +35,20 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements Ca
         if (game == null) {
             throw new RuntimeException("游戏不存在");
         }
+        if (quantity == null || quantity <= 0) {
+            throw new RuntimeException("购买数量必须大于0");
+        }
         if (game.getStock() < quantity) {
             throw new RuntimeException("库存不足");
         }
         
         Cart existingCart = cartMapper.selectByUserIdAndGameId(userId, gameId);
         if (existingCart != null) {
-            existingCart.setQuantity(existingCart.getQuantity() + quantity);
+            int newQuantity = existingCart.getQuantity() + quantity;
+            if (game.getStock() < newQuantity) {
+                throw new RuntimeException("库存不足");
+            }
+            existingCart.setQuantity(newQuantity);
             existingCart.setTotalPrice(game.getPrice().multiply(new BigDecimal(existingCart.getQuantity())));
             return cartMapper.updateById(existingCart) > 0;
         } else {
@@ -56,10 +63,17 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements Ca
     }
     
     @Override
-    public boolean updateCart(Long cartId, Integer quantity) {
+    public boolean updateCart(Long cartId, Long userId, Integer quantity) {
         Cart cart = cartMapper.selectById(cartId);
-        if (cart == null) {
+        if (cart == null || !cart.getUserId().equals(userId)) {
             return false;
+        }
+        if (quantity == null || quantity <= 0) {
+            throw new RuntimeException("购买数量必须大于0");
+        }
+        Game game = gameMapper.selectById(cart.getGameId());
+        if (game == null || game.getStock() < quantity) {
+            throw new RuntimeException("库存不足");
         }
         cart.setQuantity(quantity);
         cart.setTotalPrice(cart.getPrice().multiply(new BigDecimal(quantity)));
@@ -70,11 +84,15 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements Ca
     public boolean clearCart(Long userId) {
         QueryWrapper<Cart> wrapper = new QueryWrapper<>();
         wrapper.eq("user_id", userId);
-        return cartMapper.delete(wrapper) > 0;
+        return cartMapper.delete(wrapper) >= 0;
     }
     
     @Override
-    public boolean removeFromCart(Long cartId) {
+    public boolean removeFromCart(Long cartId, Long userId) {
+        Cart cart = cartMapper.selectById(cartId);
+        if (cart == null || !cart.getUserId().equals(userId)) {
+            return false;
+        }
         return cartMapper.deleteById(cartId) > 0;
     }
 }

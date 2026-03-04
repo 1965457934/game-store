@@ -14,6 +14,8 @@ public interface CommentService extends IService<Comment> {
     
     boolean deleteComment(Long id, Long userId);
     
+    boolean adminDeleteComment(Long id);
+    
     Double getAverageRating(Long gameId);
     
     /**

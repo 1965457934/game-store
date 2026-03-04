@@ -30,10 +30,15 @@ public class OrderController {
     }
     
     @GetMapping("/detail/{id}")
-    public Result<?> getOrderDetail(@PathVariable Long id) {
+    public Result<?> getOrderDetail(@PathVariable Long id, HttpServletRequest request) {
         Order order = orderService.getOrderDetail(id);
         if (order == null) {
             return Result.error("订单不存在");
+        }
+        Integer role = (Integer) request.getAttribute("role");
+        Long userId = (Long) request.getAttribute("userId");
+        if ((role == null || role != 1) && !order.getUserId().equals(userId)) {
+            return Result.error(403, "无权操作");
         }
         return Result.success(order);
     }
@@ -51,12 +56,31 @@ public class OrderController {
     }
     
     @PostMapping("/pay")
-    public Result<?> payOrder(@RequestBody Map<String, String> params) {
+    public Result<?> payOrder(@RequestBody Map<String, String> params, HttpServletRequest request) {
         String orderNo = params.get("orderNo");
-        if (orderService.payOrder(orderNo)) {
-            return Result.success("支付成功", null);
+        if (orderNo == null || orderNo.trim().isEmpty()) {
+            return Result.error("订单号不能为空");
         }
-        return Result.error("支付失败");
+        
+        Order order = orderService.lambdaQuery().eq(Order::getOrderNo, orderNo).one();
+        if (order == null) {
+            return Result.error("订单不存在");
+        }
+        
+        Integer role = (Integer) request.getAttribute("role");
+        Long userId = (Long) request.getAttribute("userId");
+        if ((role == null || role != 1) && !order.getUserId().equals(userId)) {
+            return Result.error(403, "无权操作");
+        }
+        
+        try {
+            if (orderService.payOrder(orderNo)) {
+                return Result.success("支付成功", null);
+            }
+            return Result.error("支付失败");
+        } catch (Exception e) {
+            return Result.error(e.getMessage());
+        }
     }
     
     @PostMapping("/cancel/{id}")

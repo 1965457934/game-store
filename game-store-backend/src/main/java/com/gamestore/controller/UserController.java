@@ -82,7 +82,12 @@ public class UserController {
     @GetMapping("/list")
     public Result<?> getUserList(
             @RequestParam(defaultValue = "1") Integer page,
-            @RequestParam(defaultValue = "10") Integer size) {
+            @RequestParam(defaultValue = "10") Integer size,
+            HttpServletRequest request) {
+        Integer role = (Integer) request.getAttribute("role");
+        if (role == null || role != 1) {
+            return Result.error(403, "无权操作");
+        }
         Page<User> pageInfo = userService.page(new Page<>(page, size));
         return Result.success(pageInfo);
     }

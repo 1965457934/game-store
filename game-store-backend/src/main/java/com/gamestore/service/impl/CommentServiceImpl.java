@@ -104,6 +104,22 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
         return success;
     }
     
+    @Override
+    @Transactional
+    public boolean adminDeleteComment(Long id) {
+        Comment existing = commentMapper.selectById(id);
+        if (existing == null) {
+            throw new RuntimeException("评论不存在");
+        }
+        
+        Long gameId = existing.getGameId();
+        boolean success = commentMapper.deleteById(id) > 0;
+        if (success && gameId != null) {
+            updateGameRating(gameId);
+        }
+        return success;
+    }
+    
     /**
      * 检查用户是否购买了指定游戏
      */

@@ -35,9 +35,9 @@
 
 <script>
 import { ref, onMounted } from 'vue'
-import { ElMessage } from 'element-plus'
+import { ElMessage, ElMessageBox } from 'element-plus'
 import { ChatDotRound } from '@element-plus/icons-vue'
-import { getCommentList, deleteComment } from '../../api/comment'
+import { getCommentList, adminDeleteComment } from '../../api/comment'
 
 export default {
   name: 'CommentManage',
@@ -60,11 +60,14 @@ export default {
 
     const deleteCommentHandler = async (id) => {
       try {
-        await deleteComment(id)
+        await ElMessageBox.confirm('确定删除这条评论吗？', '确认删除', { type: 'warning' })
+        await adminDeleteComment(id)
         ElMessage.success('删除成功')
         loadComments()
       } catch (error) {
-        console.error('删除失败:', error)
+        if (error !== 'cancel') {
+          console.error('删除失败:', error)
+        }
       }
     }
 
