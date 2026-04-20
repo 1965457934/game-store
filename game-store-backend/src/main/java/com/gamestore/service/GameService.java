@@ -18,6 +18,8 @@ public interface GameService extends IService<Game> {
     
     List<Game> getNewGames(Integer limit);
     
+    List<Game> getRecommendGames(Long userId, Integer limit);
+    
     boolean updateStock(Long gameId, Integer stock);
     
     boolean updateSales(Long gameId, Integer sales);

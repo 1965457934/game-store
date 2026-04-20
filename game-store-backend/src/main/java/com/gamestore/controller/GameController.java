@@ -63,6 +63,13 @@ public class GameController {
         return Result.success(games);
     }
     
+    @GetMapping("/recommend")
+    public Result<?> getRecommendGames(@RequestParam(defaultValue = "4") Integer limit, HttpServletRequest request) {
+        Long userId = request.getAttribute("userId") == null ? null : Long.valueOf(request.getAttribute("userId").toString());
+        List<Game> games = gameService.getRecommendGames(userId, limit);
+        return Result.success(games);
+    }
+    
     @PostMapping("/add")
     public Result<?> addGame(@RequestBody Game game, HttpServletRequest request) {
         Integer role = (Integer) request.getAttribute("role");

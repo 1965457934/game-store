@@ -144,27 +144,24 @@
         <div v-if="isLoggedIn" class="comment-form">
           <!-- 用户已评论且不在编辑模式：显示已评论提示 -->
           <div v-if="userComment && !isEditing" class="user-comment-info">
-            <el-alert
-              title="您已评价过该游戏"
-              type="info"
-              :closable="false"
-              show-icon
-            >
-              <template #default>
-                <div class="my-comment-preview">
+            <div class="my-review-card">
+              <div class="my-review-header">
+                <el-avatar :size="40" :src="user.avatar || '/default-avatar.png'" />
+                <div class="my-review-meta">
+                  <span class="my-review-title">我的评价</span>
                   <el-rate v-model="userComment.rating" disabled allow-half size="small" />
-                  <span class="my-comment-text">{{ userComment.content }}</span>
-                  <div class="my-comment-actions">
-                    <el-button type="primary" size="small" @click="startEditComment">
-                      <el-icon><Edit /></el-icon>修改评价
-                    </el-button>
-                    <el-button type="danger" size="small" @click="handleDeleteComment">
-                      <el-icon><Delete /></el-icon>删除
-                    </el-button>
-                  </div>
                 </div>
-              </template>
-            </el-alert>
+              </div>
+              <p class="my-review-content">{{ userComment.content }}</p>
+              <div class="my-review-actions">
+                <el-button type="primary" size="small" @click="startEditComment">
+                  <el-icon><Edit /></el-icon>修改评价
+                </el-button>
+                <el-button type="danger" size="small" @click="handleDeleteComment">
+                  <el-icon><Delete /></el-icon>删除
+                </el-button>
+              </div>
+            </div>
           </div>
           
           <!-- 编辑模式或未评论时：显示评论表单 -->
@@ -431,9 +428,8 @@ export default {
         // 重新加载游戏详情以更新评分
         await loadGame()
       } catch (error) {
+        // 错误提示已由 request.js 响应拦截器统一处理，此处不再重复弹出
         console.error('发表评论失败:', error)
-        console.error('错误详情:', error.response || error.message)
-        ElMessage.error(error.response?.data?.message || error.message || '发表评论失败，请稍后重试')
       }
     }
     
@@ -921,70 +917,51 @@ export default {
   margin-bottom: var(--space-lg);
 }
 
-/* el-alert 深色主题 - 强制覆盖所有白色背景 */
-.user-comment-info :deep(.el-alert) {
-  background-color: var(--bg-tertiary) !important;
-  border: 1px solid var(--border-color) !important;
-  color: var(--text-primary) !important;
+/* 我的评价卡片 */
+.my-review-card {
+  background: linear-gradient(160deg, rgba(30, 47, 64, 0.6) 0%, rgba(20, 31, 44, 0.8) 100%);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  transition: all var(--transition-normal);
 }
 
-.user-comment-info :deep(.el-alert__content) {
-  width: 100%;
-  color: var(--text-primary) !important;
+.my-review-card:hover {
+  border-color: rgba(26, 159, 255, 0.4);
+  box-shadow: 0 4px 20px rgba(26, 159, 255, 0.1);
 }
 
-.user-comment-info :deep(.el-alert__title) {
-  color: var(--text-primary) !important;
-  font-weight: 500;
+.my-review-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
 }
 
-.user-comment-info :deep(.el-alert__description) {
-  color: var(--text-secondary) !important;
-}
-
-.user-comment-info :deep(.el-alert__icon) {
-  color: var(--color-primary) !important;
-}
-
-/* 针对 type="info" 的 alert 覆盖 */
-.user-comment-info :deep(.el-alert--info) {
-  background-color: var(--bg-tertiary) !important;
-  border-color: var(--border-color) !important;
-}
-
-.user-comment-info :deep(.el-alert--info .el-alert__title) {
-  color: var(--text-primary) !important;
-}
-
-.user-comment-info :deep(.el-alert--info.is-light) {
-  background-color: var(--bg-tertiary) !important;
-}
-
-.user-comment-info :deep(.el-alert--info.is-light .el-alert__description) {
-  color: var(--text-secondary) !important;
-}
-
-.my-comment-preview {
+.my-review-meta {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
-  margin-top: var(--space-sm);
+  gap: 4px;
 }
 
-.my-comment-text {
+.my-review-title {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.my-review-content {
   color: var(--text-secondary);
   font-size: var(--font-size-sm);
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  line-height: 1.7;
+  margin-bottom: var(--space-md);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.my-comment-actions {
+.my-review-actions {
   display: flex;
   gap: var(--space-sm);
-  margin-top: var(--space-xs);
 }
 
 /* 评论表单 */

@@ -172,18 +172,79 @@ export default {
         return { name: cat.name, value: count }
       }).filter(item => item.value > 0)
 
-      // 计算销售趋势数据（按天统计）
-      const salesData = [0, 0, 0, 0, 0, 0, 0]
-      const days = ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
-      
-      orders.forEach(order => {
-        if (order.status === 1 && order.createTime) {
-          const date = new Date(order.createTime)
-          const day = date.getDay()
-          const index = day === 0 ? 6 : day - 1
-          salesData[index] += Number(order.totalAmount) || 0
-        }
-      })
+      // 计算销售趋势数据（根据选中周期统计）
+      const period = salesPeriod.value
+      const now = new Date()
+      let salesData = []
+      let days = []
+      let xAxisInterval = 0
+
+      if (period === 'week') {
+        // 本周：周一到周日
+        days = ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+        salesData = new Array(7).fill(0)
+
+        const dayOfWeek = now.getDay()
+        const diffToMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1
+        const monday = new Date(now)
+        monday.setDate(now.getDate() - diffToMonday)
+        monday.setHours(0, 0, 0, 0)
+        const sunday = new Date(monday)
+        sunday.setDate(monday.getDate() + 6)
+        sunday.setHours(23, 59, 59, 999)
+
+        orders.forEach(order => {
+          if (order.status === 1 && order.createTime) {
+            const date = new Date(order.createTime)
+            if (date >= monday && date <= sunday) {
+              const day = date.getDay()
+              const index = day === 0 ? 6 : day - 1
+              salesData[index] += Number(order.totalAmount) || 0
+            }
+          }
+        })
+      } else if (period === 'month') {
+        // 本月：1日到最后一日的数据
+        const year = now.getFullYear()
+        const month = now.getMonth()
+        const lastDay = new Date(year, month + 1, 0).getDate()
+        days = Array.from({ length: lastDay }, (_, i) => `${i + 1}日`)
+        salesData = new Array(lastDay).fill(0)
+        xAxisInterval = 4
+
+        const firstDay = new Date(year, month, 1)
+        firstDay.setHours(0, 0, 0, 0)
+        const lastDayEnd = new Date(year, month + 1, 0)
+        lastDayEnd.setHours(23, 59, 59, 999)
+
+        orders.forEach(order => {
+          if (order.status === 1 && order.createTime) {
+            const date = new Date(order.createTime)
+            if (date >= firstDay && date <= lastDayEnd) {
+              salesData[date.getDate() - 1] += Number(order.totalAmount) || 0
+            }
+          }
+        })
+      } else if (period === 'year') {
+        // 全年：1月到12月的数据
+        days = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+        salesData = new Array(12).fill(0)
+
+        const year = now.getFullYear()
+        const firstDay = new Date(year, 0, 1)
+        firstDay.setHours(0, 0, 0, 0)
+        const lastDay = new Date(year, 11, 31)
+        lastDay.setHours(23, 59, 59, 999)
+
+        orders.forEach(order => {
+          if (order.status === 1 && order.createTime) {
+            const date = new Date(order.createTime)
+            if (date >= firstDay && date <= lastDay) {
+              salesData[date.getMonth()] += Number(order.totalAmount) || 0
+            }
+          }
+        })
+      }
 
       // 销售趋势图
       if (salesChartRef.value) {
@@ -204,7 +265,8 @@ export default {
           xAxis: {
             type: 'category',
             data: days,
-            axisLine: { lineStyle: { color: '#4a5568' } }
+            axisLine: { lineStyle: { color: '#4a5568' } },
+            axisLabel: { interval: xAxisInterval }
           },
           yAxis: {
             type: 'value',

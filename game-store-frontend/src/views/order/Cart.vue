@@ -144,7 +144,7 @@ import { useStore } from 'vuex'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { getCartList, updateCart, deleteCart, clearCart } from '../../api/cart'
 import { createOrder } from '../../api/order'
-import { getTopGames } from '../../api/game'
+import { getRecommendGames } from '../../api/game'
 
 export default {
   name: 'Cart',
@@ -192,7 +192,7 @@ export default {
 
     const loadRecommendGames = async () => {
       try {
-        const res = await getTopGames(4)
+        const res = await getRecommendGames(4)
         recommendGames.value = res || []
       } catch (error) {
         console.error('加载推荐游戏失败:', error)
