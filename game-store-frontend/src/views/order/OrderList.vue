@@ -732,27 +732,117 @@ export default {
   padding-top: var(--space-xl);
 }
 
-/* 订单详情弹窗 */
-.order-detail-dialog :deep(.el-dialog) {
-  background: linear-gradient(160deg, rgba(30, 47, 64, 0.88) 0%, rgba(20, 31, 44, 0.98) 100%);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
+/* 订单详情弹窗 - 强制深色主题 - 使用双重选择器提高优先级 */
+.order-detail-dialog.order-detail-dialog :deep(.el-dialog) {
+  background: #1e2329 !important;
+  background-color: #1e2329 !important;
+  border: 1px solid #3d444d !important;
 }
 
-.order-detail-dialog :deep(.el-dialog__title) {
-  color: var(--text-primary);
+.order-detail-dialog.order-detail-dialog :deep(.el-dialog__header) {
+  background: #1e2329 !important;
+  background-color: #1e2329 !important;
+  border-bottom: 1px solid #3d444d !important;
+  margin-right: 0 !important;
+  padding: 16px 20px !important;
+}
+
+.order-detail-dialog.order-detail-dialog :deep(.el-dialog__title) {
+  color: #ffffff !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.order-detail-dialog.order-detail-dialog :deep(.el-dialog__body) {
+  background: #1e2329 !important;
+  background-color: #1e2329 !important;
+  color: #c0c0c0 !important;
+  padding: 20px !important;
+}
+
+.order-detail-dialog :deep(.el-dialog__headerbtn .el-dialog__close) {
+  color: #909399 !important;
+}
+
+.order-detail-dialog :deep(.el-dialog__headerbtn:hover .el-dialog__close) {
+  color: #ffffff !important;
+}
+
+/* 强制所有内部元素背景透明，除了指定深色的 */
+.order-detail-dialog :deep(.el-dialog *) {
+  background-color: transparent;
+}
+
+/* 标签样式 */
+.order-detail-dialog :deep(.el-tag--success) {
+  background-color: #2d4a3e !important;
+  border-color: #4a7c59 !important;
+  color: #85ce61 !important;
+}
+
+.order-detail-dialog :deep(.el-tag--warning) {
+  background-color: #4a3f2d !important;
+  border-color: #8c7b4a !important;
+  color: #ebb563 !important;
+}
+
+.order-detail-dialog :deep(.el-tag--info) {
+  background-color: #3d444d !important;
+  border-color: #606266 !important;
+  color: #c0c0c0 !important;
+}
+
+.order-detail-dialog :deep(.el-dialog__headerbtn) {
+  top: 16px;
+  right: 16px;
+}
+
+.order-detail-dialog :deep(.el-dialog__headerbtn .el-dialog__close) {
+  color: #909399;
+}
+
+.order-detail-dialog :deep(.el-dialog__headerbtn:hover .el-dialog__close) {
+  color: #fff;
+}
+
+.order-detail-dialog :deep(.el-dialog__body) {
+  background: #1e2329 !important;
+  background-color: #1e2329 !important;
+  color: #c0c0c0;
+  padding: 20px;
 }
 
 .order-detail {
-  color: var(--text-secondary);
+  background: #1e2329 !important;
+  color: #c0c0c0;
+}
+
+/* 标签深色主题 */
+.order-detail-dialog :deep(.el-tag--success) {
+  background-color: #2d4a3e !important;
+  border-color: #4a7c59 !important;
+  color: #85ce61 !important;
+}
+
+.order-detail-dialog :deep(.el-tag--warning) {
+  background-color: #4a3f2d !important;
+  border-color: #8c7b4a !important;
+  color: #ebb563 !important;
+}
+
+.order-detail-dialog :deep(.el-tag--info) {
+  background-color: #3d444d !important;
+  border-color: #606266 !important;
+  color: #c0c0c0 !important;
 }
 
 .detail-header {
-  background: var(--bg-secondary);
+  background: #2a2f38 !important;
+  background-color: #2a2f38 !important;
   padding: var(--space-lg);
   border-radius: var(--radius-md);
   margin-bottom: var(--space-lg);
+  border: 1px solid #3d444d;
 }
 
 .detail-row {
@@ -760,7 +850,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: var(--space-sm) 0;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid #3d444d;
 }
 
 .detail-row:last-child {
@@ -768,21 +858,24 @@ export default {
 }
 
 .detail-label {
-  color: var(--text-muted);
+  color: #909399;
 }
 
 .detail-value {
-  color: var(--text-primary);
+  color: #fff;
   font-weight: 500;
 }
 
 .detail-items {
   margin-bottom: var(--space-lg);
+  background: #1e2329 !important;
 }
 
 .detail-items h4 {
-  color: var(--text-primary);
+  color: #fff;
   margin-bottom: var(--space-md);
+  font-size: var(--font-size-md);
+  background: transparent;
 }
 
 .detail-item {
@@ -790,9 +883,11 @@ export default {
   align-items: center;
   gap: var(--space-md);
   padding: var(--space-md);
-  background: var(--bg-secondary);
+  background: #2a2f38 !important;
+  background-color: #2a2f38 !important;
   border-radius: var(--radius-md);
   margin-bottom: var(--space-sm);
+  border: 1px solid #3d444d;
 }
 
 .detail-item img {
@@ -809,12 +904,12 @@ export default {
 }
 
 .item-detail .item-name {
-  color: var(--text-primary);
+  color: #fff;
   margin-bottom: 4px;
 }
 
 .item-detail .item-price {
-  color: var(--text-muted);
+  color: #909399;
   font-size: var(--font-size-sm);
 }
 
@@ -824,24 +919,27 @@ export default {
 }
 
 .detail-summary {
-  background: var(--bg-secondary);
+  background: #2a2f38 !important;
+  background-color: #2a2f38 !important;
   padding: var(--space-lg);
   border-radius: var(--radius-md);
+  border: 1px solid #3d444d;
 }
 
 .summary-row {
   display: flex;
   justify-content: space-between;
   padding: var(--space-sm) 0;
-  color: var(--text-secondary);
+  color: #c0c0c0;
 }
 
 .summary-row.total {
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid #3d444d;
   margin-top: var(--space-sm);
   padding-top: var(--space-md);
   font-size: var(--font-size-lg);
   font-weight: bold;
+  color: #fff;
 }
 
 .summary-row.total .amount {
@@ -908,5 +1006,61 @@ export default {
     justify-content: flex-end;
     margin-top: var(--space-sm);
   }
+}
+
+/* 全局强制覆盖 Element Plus 对话框样式 - 解决 teleport 渲染问题 */
+:global(.el-dialog.order-detail-dialog) {
+  background-color: #1e2329 !important;
+  border: 1px solid #3d444d !important;
+}
+
+:global(.el-dialog.order-detail-dialog .el-dialog__header) {
+  background-color: #1e2329 !important;
+  border-bottom: 1px solid #3d444d !important;
+  margin-right: 0 !important;
+}
+
+:global(.el-dialog.order-detail-dialog .el-dialog__title) {
+  color: #ffffff !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+:global(.el-dialog.order-detail-dialog .el-dialog__body) {
+  background-color: #1e2329 !important;
+  color: #c0c0c0 !important;
+  padding: 20px !important;
+}
+
+:global(.el-dialog.order-detail-dialog .el-dialog__headerbtn .el-dialog__close) {
+  color: #909399 !important;
+}
+
+:global(.el-dialog.order-detail-dialog .el-dialog__headerbtn:hover .el-dialog__close) {
+  color: #ffffff !important;
+}
+
+/* 更激进的覆盖方式 - 直接针对所有可能的白色背景元素 */
+:global(.order-detail-dialog),
+:global(.order-detail-dialog .el-overlay-dialog),
+:global(.order-detail-dialog .el-dialog),
+:global(.order-detail-dialog .el-dialog__header),
+:global(.order-detail-dialog .el-dialog__body),
+:global(.order-detail-dialog .el-dialog__footer) {
+  background-color: #1e2329 !important;
+}
+
+/* 确保内容区域 */
+:global(.order-detail-dialog .order-detail),
+:global(.order-detail-dialog .detail-header),
+:global(.order-detail-dialog .detail-item),
+:global(.order-detail-dialog .detail-summary) {
+  background-color: #2a2f38 !important;
+}
+
+/* 标题颜色 */
+:global(.order-detail-dialog .el-dialog__title),
+:global(.order-detail-dialog .detail-items h4) {
+  color: #ffffff !important;
 }
 </style>

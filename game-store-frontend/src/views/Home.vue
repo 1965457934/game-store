@@ -128,21 +128,21 @@
         <div class="features-grid">
           <div class="feature-item">
             <div class="feature-icon">
-              <el-icon><Shield /></el-icon>
+              <el-icon><Lock /></el-icon>
             </div>
             <h3>正品保障</h3>
             <p>官方授权，100% 正版游戏</p>
           </div>
           <div class="feature-item">
             <div class="feature-icon">
-              <el-icon><Lightning /></el-icon>
+              <el-icon><Promotion /></el-icon>
             </div>
             <h3>极速发货</h3>
             <p>自动发货，即刻畅玩</p>
           </div>
           <div class="feature-item">
             <div class="feature-icon">
-              <el-icon><Discount /></el-icon>
+              <el-icon><Ticket /></el-icon>
             </div>
             <h3>超值优惠</h3>
             <p>定期折扣，省钱省心</p>

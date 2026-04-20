@@ -392,7 +392,7 @@ export default {
 
 /* 对话框深色主题 */
 :deep(.el-dialog) {
-  background: #2a2f38 !important;
+  background: #1e2329 !important;
   border: 1px solid #3d444d;
 }
 
@@ -400,38 +400,58 @@ export default {
   background: #1e2329 !important;
   border-bottom: 1px solid #3d444d;
   margin-right: 0;
+  padding: 16px 20px;
 }
 
 :deep(.el-dialog__title) {
   color: #fff !important;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 :deep(.el-dialog__body) {
-  background: #2a2f38 !important;
+  background: #1e2329 !important;
   color: #c0c0c0;
+  padding: 20px;
 }
 
 :deep(.el-form-item__label) {
-  color: #c0c0c0;
+  color: #a0a0a0;
+  font-weight: 500;
 }
 
-:deep(.el-input__wrapper) {
-  background: #1e2329 !important;
-  box-shadow: 0 0 0 1px #3d444d inset;
+/* 统一所有输入框背景色 */
+:deep(.el-input .el-input__wrapper) {
+  background: #2a2f38 !important;
+  box-shadow: 0 0 0 1px #3d444d inset !important;
+  border-radius: 4px;
+}
+
+:deep(.el-input .el-input__wrapper:hover) {
+  box-shadow: 0 0 0 1px #4a5568 inset !important;
+}
+
+:deep(.el-input .el-input__wrapper.is-focus) {
+  box-shadow: 0 0 0 1px #1a9fff inset !important;
 }
 
 :deep(.el-input__inner) {
   color: #e0e0e0;
+  background: transparent !important;
 }
 
-:deep(.el-textarea__inner) {
-  background: #1e2329 !important;
-  border-color: #3d444d;
-  color: #e0e0e0;
+:deep(.el-input__inner::placeholder) {
+  color: #606266;
 }
 
+/* 选择器深色主题 */
 :deep(.el-select .el-input__wrapper) {
-  background: #1e2329 !important;
+  background: #2a2f38 !important;
+  box-shadow: 0 0 0 1px #3d444d inset !important;
+}
+
+:deep(.el-select .el-input.is-focus .el-input__wrapper) {
+  box-shadow: 0 0 0 1px #1a9fff inset !important;
 }
 
 :deep(.el-select-dropdown) {
@@ -449,13 +469,89 @@ export default {
   color: #fff;
 }
 
+/* 单选按钮深色主题 */
 :deep(.el-radio) {
   color: #c0c0c0;
+}
+
+:deep(.el-radio__input.is-checked + .el-radio__label) {
+  color: #1a9fff !important;
+}
+
+:deep(.el-radio__input.is-checked .el-radio__inner) {
+  border-color: #1a9fff !important;
+  background: #1a9fff !important;
 }
 
 .form-tip {
   color: #909399;
   font-size: 12px;
+}
+
+/* 数字输入器深色主题 */
+:deep(.el-input-number) {
+  width: 100%;
+}
+
+:deep(.el-input-number .el-input__wrapper) {
+  background: #2a2f38 !important;
+  box-shadow: 0 0 0 1px #3d444d inset !important;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+:deep(.el-input-number .el-input__inner) {
+  color: #e0e0e0;
+  text-align: center;
+}
+
+:deep(.el-input-number__decrease),
+:deep(.el-input-number__increase) {
+  background: #353b45 !important;
+  border-color: #3d444d !important;
+  color: #c0c0c0 !important;
+  width: 32px;
+}
+
+:deep(.el-input-number__decrease:hover),
+:deep(.el-input-number__increase:hover) {
+  color: #1a9fff !important;
+  background: #3d444d !important;
+}
+
+:deep(.el-input-number__decrease.is-disabled),
+:deep(.el-input-number__increase.is-disabled) {
+  color: #606266 !important;
+  background: #2a2f38 !important;
+}
+
+/* 按钮样式 */
+:deep(.el-dialog__footer) {
+  background: #1e2329 !important;
+  border-top: 1px solid #3d444d;
+  padding: 16px 20px;
+}
+
+:deep(.el-button:not(.el-button--primary)) {
+  background: #2a2f38 !important;
+  border-color: #3d444d !important;
+  color: #c0c0c0 !important;
+}
+
+:deep(.el-button:not(.el-button--primary):hover) {
+  border-color: #1a9fff !important;
+  color: #1a9fff !important;
+  background: #353b45 !important;
+}
+
+:deep(.el-button--primary) {
+  background: #1a9fff !important;
+  border-color: #1a9fff !important;
+}
+
+:deep(.el-button--primary:hover) {
+  background: #4db3ff !important;
+  border-color: #4db3ff !important;
 }
 
 /* 上传组件 */
@@ -470,11 +566,13 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #1e2329;
+  background: #2a2f38;
+  transition: all 0.3s;
 }
 
 .banner-uploader:hover {
   border-color: #1a9fff;
+  background: #353b45;
 }
 
 .banner-preview {
@@ -488,6 +586,11 @@ export default {
   flex-direction: column;
   align-items: center;
   color: #606266;
+}
+
+.upload-placeholder .el-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
 }
 
 .upload-loading {

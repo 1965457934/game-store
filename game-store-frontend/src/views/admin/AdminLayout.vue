@@ -114,7 +114,7 @@ export default {
     const menuItems = [
       { path: '/admin/dashboard', label: '数据概览', icon: 'DataLine' },
       { path: '/admin/users', label: '用户管理', icon: 'User' },
-      { path: '/admin/games', label: '游戏管理', icon: 'GameController' },
+      { path: '/admin/games', label: '游戏管理', icon: 'Grid' },
       { path: '/admin/categories', label: '分类管理', icon: 'Folder' },
       { path: '/admin/orders', label: '订单管理', icon: 'ShoppingCart' },
       { path: '/admin/comments', label: '评论管理', icon: 'ChatDotRound' },

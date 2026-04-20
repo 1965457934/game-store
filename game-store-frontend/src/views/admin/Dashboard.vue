@@ -97,7 +97,7 @@ export default {
     
     const statsCards = ref([
       { key: 'users', label: '用户总数', value: '0', icon: 'User', gradient: 'linear-gradient(135deg, #409EFF 0%, #66b1ff 100%)', path: '/admin/users' },
-      { key: 'games', label: '游戏总数', value: '0', icon: 'GameController', gradient: 'linear-gradient(135deg, #67C23A 0%, #85ce61 100%)', path: '/admin/games' },
+      { key: 'games', label: '游戏总数', value: '0', icon: 'Grid', gradient: 'linear-gradient(135deg, #67C23A 0%, #85ce61 100%)', path: '/admin/games' },
       { key: 'orders', label: '订单总数', value: '0', icon: 'ShoppingCart', gradient: 'linear-gradient(135deg, #E6A23C 0%, #ebb563 100%)', path: '/admin/orders' },
       { key: 'amount', label: '总销售额', value: '¥0', icon: 'Money', gradient: 'linear-gradient(135deg, #F56C6C 0%, #f78989 100%)', path: '/admin/orders' }
     ])

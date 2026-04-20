@@ -10,7 +10,7 @@
         </div>
         
         <!-- 桌面导航 -->
-        <nav class="nav-menu desktop-only">
+        <nav class="nav-menu desktop-only flex">
           <router-link to="/" class="nav-link" :class="{ active: $route.path === '/' }">
             <el-icon><HomeFilled /></el-icon>
             首页
@@ -273,12 +273,16 @@ export default {
 /* 导航菜单 */
 .nav-menu {
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: var(--space-md);
+  flex-wrap: nowrap;
 }
 
 .nav-link {
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   align-items: center;
   gap: var(--space-xs);
   padding: var(--space-sm) var(--space-md);
@@ -288,6 +292,7 @@ export default {
   border-radius: var(--radius-full);
   border: 1px solid transparent;
   transition: all var(--transition-normal);
+  white-space: nowrap;
 }
 
 .nav-link:hover,
